@@ -212,7 +212,6 @@ The evaluation data was chosen to provide a realistic benchmark of predictive pe
 
 Evaluation data underwent the same preprocessing pipeline as the training data (since the train_test_split step was applied after preprocessing the data). Specifically, the preprocessing pipeline can be executed independently of the model, ensuring consistency between training and evaluation inputs.
 
-
 ## Quantitative analyses
 
 ### Unitary results
@@ -272,8 +271,7 @@ To compare performance across different factors, we report the **average Mean Ab
 | Time Window      | **4.70**      | **4.21**     |
 | Zone             | **4.80**      | **4.30**     |
 
-These results suggest that prediction errors vary slightly across dimensions,  
-with **day-of-week effects** being the hardest to capture on average.
+These results suggest that prediction errors vary slightly across dimensions, with **day-of-week effects** being the hardest to capture on average.
 
 ### Analysis units
 
@@ -281,7 +279,7 @@ with **day-of-week effects** being the hardest to capture on average.
 
 - **Granularity**: zone × time window × day  
 - **Reported**: per zone, per day, per time window, and aggregated summaries  
-- **Visuals**: lineplots and heatmaps illustrate how errors vary across combined dimensions
+- **Visuals**: lineplots and heatmaps illustrate how errors vary across combine dimensions
 
 ## Ethical considerations
 
