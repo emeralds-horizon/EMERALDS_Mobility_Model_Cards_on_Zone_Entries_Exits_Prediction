@@ -212,34 +212,76 @@ The evaluation data was chosen to provide a realistic benchmark of predictive pe
 
 Evaluation data underwent the same preprocessing pipeline as the training data (since the train_test_split step was applied after preprocessing the data). Specifically, the preprocessing pipeline can be executed independently of the model, ensuring consistency between training and evaluation inputs.
 
+
 ## Quantitative analyses
 
 ### Unitary results
 
 *How did the model perform with respect to each factor?*
 
-The model’s performance is evaluated separately across the three single factors (i.e. day of week, time window, zone) using MAE for both targets (entries, exits) as follows:
+The model was evaluated separately by **day of week**, **time window**, and **zone**.  
+For each factor, Mean Absolute Error (MAE) was calculated for both **entries** and **exits**.  
+This shows how prediction performance varies depending on temporal and spatial dimensions.
 
-1. By day of week (datetime_day_week)
+- **Day of Week:** Some days exhibited systematically higher or lower MAE (e.g., weekends vs weekdays). For example, Saturday has systematically higher MAE while Sunday has lower.  
+
 ![Table](./images/MAE_weekday.png)
 
-2. By time window (datetime_W)
+- **Time Window:** Performance varied by time of day, with peak hours typically harder to predict.  
+
 ![Table](./images/MAE_timewindow.png)
 
-3. By zone (zone_codes)
+- **Zone:** Prediction errors were not evenly distributed across zones; some zones consistently showed higher MAE. For instance, the zone with code 22 has significantly higher MAE.
+
 ![Table](./images/MAE_zone.png)
 
 ### Intersectional result
 
 *How did the model perform with respect to the intersection of evaluated factors?*
 
+We further analysed pairwise combinations of factors:
+
+- **Zone × Day of Week** 
+
+![Zone-Day Entries Heatmap](./images/zone_day_entries.png)  
+![Zone-Day Exits Heatmap](./images/zone_day_exits.png)  
+
+- **Zone × Time Window**  
+
+![Zone-Time Entries Heatmap](./images/zone_time_entries.png)  
+![Zone-Time Exits Heatmap](./images/zone_time_exits.png) 
+
+- **Day of Week × Time Window**
+
+![Day-Time Entries Heatmap](./images/day_time_entries.png)  
+![Day-Time Exits Heatmap](./images/day_time_exits.png)  
+
+Heatmaps were generated to visualise how MAE changes across intersections of spatial and temporal factors.  
+For example, in the **Zone × Day heatmap**, certain zones on weekdays showed systematically higher prediction errors (e.g. 22 and 24).
+
 ### Multidimensionality 
 
 *Mobility models often generate outputs across multiple dimensions, such as demographic, geographic, and temporal factors. Evaluating model performance separately for each of these dimensions helps identify biases and assess whether the model generalizes well across different user groups and environments.*
 
+The model outputs **entries** and **exits** simultaneously.  
+To compare performance across different factors, we report the **average Mean Absolute Error (MAE)** for each dimension:
+
+| Dimension        | Avg Entry MAE | Avg Exit MAE |
+|------------------|---------------|--------------|
+| Day of Week      | **5.30**      | **4.73**     |
+| Time Window      | **4.70**      | **4.21**     |
+| Zone             | **4.80**      | **4.30**     |
+
+These results suggest that prediction errors vary slightly across dimensions,  
+with **day-of-week effects** being the hardest to capture on average.
+
 ### Analysis units
 
 *Model results should be assessed at the most granular meaningful level. For example, if a model predicts ride demand at the station level but is used for area-wide forecasts (aggregating multiple stations), performance should be evaluated both at the station level and in aggregate.*
+
+- **Granularity**: zone × time window × day  
+- **Reported**: per zone, per day, per time window, and aggregated summaries  
+- **Visuals**: lineplots and heatmaps illustrate how errors vary across combined dimensions
 
 ## Ethical considerations
 
