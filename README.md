@@ -63,6 +63,7 @@ The target values are m_entries (number of entries) and m_exits (number of exits
 *Where can resources for more information be found?*
 
 [EMERALDS Website](https://emeralds-horizon.eu/)
+
 [EMERALDS Github Repository](https://github.com/emeralds-horizon)
 
 ### Citation details
