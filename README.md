@@ -48,7 +48,7 @@ A Neural Network (feed-forward, fully connected, Keras Sequential) with embeddin
 
 *Mobility models are often location specific. A model trained in one city may not be directly transferable to another. Therefore, specifying the geographic coverage—whether as named regions, a bounding box, or a map plot—is crucial for identifying suitable models. Additionally, if the model has been trained to provide predictions for a certain time only, its valid time extent should also be clearly stated*
 
-The dataset uses zone_codes and entry/exit counts from Latvia. (ASK)
+The dataset is trained on data describing public transport demand (number of entries and exits) in Riga (Latvia) and refers to zones of this city.
 
 ###  Information about training algorithms, parameters, fairness constraints or other applied  approaches, and features
 
@@ -61,7 +61,9 @@ The target values are m_entries (number of entries) and m_exits (number of exits
 ### Paper or other resource for more information
 
 *Where can resources for more information be found?*
-[TO ADD EMERALDS GIT AND WEBSITE]
+
+[EMERALDS Website](https://emeralds-horizon.eu/)
+[EMERALDS Github Repository](https://github.com/emeralds-horizon)
 
 ### Citation details
 
@@ -96,11 +98,8 @@ Predictions are made at the day and time window level (weekly temporal granulari
 ### Example results
 
 *Providing sample outputs, such as predictions or classifications, can illustrate the model’s behavior and expected performance in practical scenarios.*
-
 Example:
-
 Input: Day = 2, Time = 15:54, Zone = Rumbula
-
 Output: Predicted entries = 11.1, exits = 10.5
 
 ### Primary intended users
@@ -228,7 +227,6 @@ The model’s performance is evaluated separately across the three single factor
 
 3. By zone (zone_codes)
 ![Table](./images/MAE_zone.png)
-
 
 ### Intersectional result
 
