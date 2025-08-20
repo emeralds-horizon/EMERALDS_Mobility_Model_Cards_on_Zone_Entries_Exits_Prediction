@@ -1,4 +1,4 @@
-# Mobility Model Card for "add model name here"
+# Mobility Model Card for Zone-entries-exits-prediction
 
 *For explanations of the sections and example model cards, please revisit the orginal [Google paper](https://arxiv.org/abs/1810.03993) and our [Mobility Model Card manuscript](EMERALDS_Mobility_Model_Cards_submitted.pdf)*
   
@@ -96,8 +96,11 @@ Predictions are made at the day and time window level (weekly temporal granulari
 ### Example results
 
 *Providing sample outputs, such as predictions or classifications, can illustrate the model’s behavior and expected performance in practical scenarios.*
+
 Example:
+
 Input: Day = 2, Time = 15:54, Zone = Rumbula
+
 Output: Predicted entries = 11.1, exits = 10.5
 
 ### Primary intended users
@@ -218,15 +221,7 @@ Evaluation data underwent the same preprocessing pipeline as the training data (
 The model’s performance is evaluated separately across the three single factors (i.e. day of week, time window, zone) using MAE for both targets (entries, exits) as follows:
 
 1. By day of week (datetime_day_week)
-| datetime_day_week | y_true_entries_score | y_true_exits_score |
-|-------------------|----------------------|--------------------|
-| 1.0               | 5.295033             | 4.720369           |
-| 2.0               | 5.086748             | 4.628552           |
-| 3.0               | 5.346359             | 4.767142           |
-| 4.0               | 5.526356             | 4.944904           |
-| 5.0               | 5.486233             | 4.882710           |
-| 6.0               | 5.764511             | 5.125236           |
-| 7.0               | 4.573494             | 4.031384           |
+![Table](./images/MAE_weekday.png)
 
 2. By time window (datetime_W)
 ![Table](./images/MAE_timewindow.png)
