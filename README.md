@@ -214,7 +214,9 @@ Evaluation data underwent the same preprocessing pipeline as the training data (
 ### Unitary results
 
 *How did the model perform with respect to each factor?*
-The model’s performance is evaluated separately across three single factors (i.e. day of week, time window, zone) using MAE for both targets (entries, exits) as follows:
+
+The model’s performance is evaluated separately across the three single factors (i.e. day of week, time window, zone) using MAE for both targets (entries, exits) as follows:
+
 1. By day of week (datetime_day_week)
 | datetime_day_week | y_true_entries_score | y_true_exits_score |
 |-------------------|----------------------|--------------------|
@@ -227,10 +229,10 @@ The model’s performance is evaluated separately across three single factors (i
 | 7.0               | 4.573494             | 4.031384           |
 
 2. By time window (datetime_W)
-![alt text](image.png)
+![Table](./images/MAE_timewindow.png)
 
 3. By zone (zone_codes)
-![alt text](image-1.png)
+![Table](./images/MAE_zone.png)
 
 
 ### Intersectional result
