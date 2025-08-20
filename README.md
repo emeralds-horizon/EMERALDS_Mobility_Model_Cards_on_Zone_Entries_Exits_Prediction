@@ -26,17 +26,19 @@ INLECOM INNOVATIONS (SME)
 
 *When was the model developed? This is useful for all stakeholders to become further informed on what techniques and data sources were likely to be available during model development*
 
-FIRST SEMESTER OF 2025
+FIRST SEMESTER OF 2025 
 
 ### Model version
 
 *Which version of the model is it, and how does it differ from previous versions? This is useful for all stakeholders to track whether the model is the latest version, associate known bugs to the correct model versions, and aid in model comparisons.*
 
+This model is the first version, corresponding to the prototype. 
+
 ### Unique identifier. 
 
-Prototype version: B_NN_v1
-
 *In addition to the model version, a unique identifier should be assigned to facilitate tracking and linking between related models. This could be implemented using universally unique identifiers (UUIDs) or other standardized referencing systems. (See also the “Related model cards” addition to the Caveats and Recommendations section.)*
+
+Prototype version: B_NN_v1 
 
 ### Model type
 
@@ -69,17 +71,20 @@ The target values are m_entries (number of entries) and m_exits (number of exits
 ### Citation details
 
 *How should the model be cited?*
-????
+
+???? (@Stathis: To be checked)
 
 ### License
 
 *License information can be provided.*
+
 Open for use.
 
 ### Contact details 
 
 *Where to send questions or comments about the model.*
-???
+
+??? (@Stathis: To be checked)
 
 ## Intended use
 
@@ -99,6 +104,7 @@ Predictions are made at the day and time window level (weekly temporal granulari
 ### Example results
 
 *Providing sample outputs, such as predictions or classifications, can illustrate the model’s behavior and expected performance in practical scenarios.*
+
 Example:
 Input: Day = 2, Time = 15:54, Zone = Rumbula
 Output: Predicted entries = 11.1, exits = 10.5
@@ -153,7 +159,7 @@ The model is evaluated using MAE (Mean Absolute Error) and R² (Coefficient of D
 
 *To contextualize performance measurements, it is important to specify the thresholds used in the evaluation. These may include the forecast horizon (e.g., 15-minute or 1-hour predictions), spatial resolution (e.g., traffic density per road segment), and temporal resolution (e.g., hourly or daily mobility forecasts).*
 
-The model provides predictions at a continuous scale (entries and exits). Probability cutoffs and thresholds in terms of forecast horizon or spatial/temporal resolution have not been explicitly defined and used for the model's evaluation.  (?)
+The model provides predictions at a continuous scale (entries and exits). Probability cutoffs and thresholds in terms of forecast horizon or spatial/temporal resolution have not been explicitly defined and used for the model's evaluation.  (@Stathis: To be checked)
 
 ### Approaches to uncertainty and variability: 
 
@@ -175,7 +181,7 @@ The initial datast is preprocessed to take the form "entry zone, day of the week
 
 *Why were these datasets chosen?*
 
-These datasets were chosen because they represent the most complete available pilot mobility data within EMERALDS, capturing passenger flows (entries and exits) at the granularity needed for forecasting. (Q: say somwthing more specific about our task ?)
+These datasets were chosen because they represent the most complete available pilot mobility data within EMERALDS, capturing passenger flows (entries and exits) at the granularity needed for forecasting. (@Stathis: shall we say something more specific about our task ?)
 
 ### Preprocessing
 
@@ -331,4 +337,4 @@ Performance may degrade due to data drift (e.g., seasonal changes, post-pandemic
 
 *Listing related Model Cards can help users understand connections between models and identify alternative options. (Some catalogs, such as Huggingface, have already adopted this approach.) Additionally, leveraging semantic web approaches for linking Model Cards as structured data has been proposed [6], which could further improve trust and reusability.*
 
-This model appears to be standalone and cannot be linked to other related model cards. (Q: shall we include model cards of the developped tools from partners of the consortium?)
+This model appears to be standalone and cannot be linked to other related model cards. (@Stathis: shall we include model cards of the developped tools from partners of the consortium?)
