@@ -166,25 +166,25 @@ Evaluation data underwent the same preprocessing pipeline as the training data (
 ### Unitary results
 
 The model was evaluated separately by **day of week**, **time window**, and **zone**.  
-For each factor, Mean Absolute Error (MAE) was calculated for both **entries** and **exits**.  
-This shows how prediction performance varies depending on temporal and spatial dimensions.
+For each factor, Mean Percentage Error (MPE) was calculated for both **entries** and **exits**.  
+This shows how prediction performance varies depending on temporal and spatial dimensions without being affected by the absolute value of the predicted variable.
 
-- **Day of Week:** Some days exhibited systematically higher or lower MAE (e.g., weekends vs weekdays). For example, Saturday has systematically higher MAE while Sunday has lower.  
+- **Day of Week:** Some days exhibited systematically higher MPE (e.g., weekends vs weekdays). For example, weekends has systematically higher MPE.
 
 <div style="display: flex; justify-content: space-around;">
-  <img src="./images/MAE_weekday.png" width="600"/>
+  <img src="./images/MPE_weekday.png" width="600"/>
 </div>
 
-- **Time Window:** Performance varied by time of day, with peak hours typically harder to predict.  
+- **Time Window:** Performance varied by time of day, with off-peak hours (early in the morning and late at night) typically harder to predict. This error is likely to be due to the very few data capturing those timewindows. 
 
 <div style="display: flex; justify-content: space-around;">
-  <img src="./images/MAE_timewindow.png" width="600"/>
+  <img src="./images/MPE_timewindow.png" width="600"/>
 </div>
 
-- **Zone:** Prediction errors were not evenly distributed across zones; some zones consistently showed higher MAE. For instance, the zone with code 22 (i.e. Centrs-Tirgus) has significantly higher MAE.
+- **Zone:** Prediction errors were not evenly distributed across zones; some zones consistently showed higher MPE. For instance, the zones with code 70 and 58 (i.e. Piņķi, Mangaļsala respectively) have very high MPE.
 
 <div style="display: flex; justify-content: space-around;">
-  <img src="./images/MAE_zone.png" width="600"/>
+  <img src="./images/MPE_zone.png" width="600"/>
 </div>
 
 ### Intersectional result
@@ -195,8 +195,8 @@ We further analysed pairwise combinations of factors:
 
 <table>
   <tr>
-    <td><img src="./images/zone_day_entries.png" width="500"/></td>
-    <td><img src="./images/zone_day_exits.png" width="500"/></td>
+    <td><img src="./images/mpe_zone_day_entries.png" width="500"/></td>
+    <td><img src="./images/mpe_zone_day_exits.png" width="500"/></td>
   </tr>
   <tr>
     <td align="center">Figure 1: Zone-Day Entries Heatmap</td>
@@ -208,8 +208,8 @@ We further analysed pairwise combinations of factors:
 
 <table>
   <tr>
-    <td><img src="./images/zone_time_entries.png" width="500"/></td>
-    <td><img src="./images/zone_time_exits.png" width="500"/></td>
+    <td><img src="./images/mpe_zone_time_entries.png" width="500"/></td>
+    <td><img src="./images/mpe_zone_time_exits.png" width="500"/></td>
   </tr>
   <tr>
     <td align="center">Figure 1: Zone-Time Entries Heatmap</td>
@@ -221,8 +221,8 @@ We further analysed pairwise combinations of factors:
 
 <table>
   <tr>
-    <td><img src="./images/day_time_entries.png" width="500"/></td>
-    <td><img src="./images/day_time_exits.png" width="500"/></td>
+    <td><img src="./images/mpe_day_time_entries.png" width="500"/></td>
+    <td><img src="./images/mpe_day_time_exits.png" width="500"/></td>
   </tr>
   <tr>
     <td align="center">Figure 1: Day-Time Entries Heatmap</td>
@@ -230,21 +230,24 @@ We further analysed pairwise combinations of factors:
   </tr>
 </table>
 
-Heatmaps were generated to visualise how MAE changes across intersections of spatial and temporal factors.  
-For example, in the **Zone × Day heatmap**, certain zones on weekdays showed systematically higher prediction errors (e.g. 22 - Centrs-Tirgus and 24 - Centrs-parks).
+Heatmaps were generated to visualise how MPE changes across intersections of spatial and temporal factors.  
+
+For example, in the **Day × Time Window heatmap**, day 1 (i.e. Monday) has significantly higher MPE at the timewindows 17 and 18 (i.e. 01:00-01:15 am and 01:15-01:30 am). This is aligned with the observation on the Time Window line plot above. 
+
+Another example is that in the **Zone × Day heatmap** where some zones on some days of the week showed systematically higher prediction errors (e.g. 58 especially on days 2-4, 70 on days 1, 3, 6 and 7, and 108 on day 1 and 4).
 
 ### Multidimensionality 
 
 The model outputs **entries** and **exits** simultaneously.  
-To compare performance across different factors, we report the **average Mean Absolute Error (MAE)** for each dimension:
+To compare performance across different factors, we report the **average Mean Perentage Error (MAE)** for each dimension:
 
-| Dimension        | Avg Entry MAE | Avg Exit MAE |
-|------------------|---------------|--------------|
-| Day of Week      | **5.30**      | **4.73**     |
-| Time Window      | **4.70**      | **4.21**     |
-| Zone             | **4.80**      | **4.30**     |
+| Dimension        | Avg Entry MPE (%) | Avg Exit MPE (%) |
+|------------------|-------------------|------------------|
+| Day of Week      | **51.41**         | **51.28**        |
+| Time Window      | **57.69**         | **57.59**        |
+| Zone             | **55.03**         | **55.34**        |
 
-These results suggest that prediction errors vary slightly across dimensions, with **day-of-week effects** being the hardest to capture on average.
+These results suggest that prediction errors vary slightly across dimensions, with **time-windaw effects** being the hardest to capture on average.
 
 ### Analysis units
 
