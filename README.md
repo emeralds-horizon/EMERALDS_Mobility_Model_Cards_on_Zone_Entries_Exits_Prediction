@@ -243,9 +243,9 @@ To compare performance across different factors, we report the **average Mean Pe
 
 | Dimension        | Avg Entry MPE (%) | Avg Exit MPE (%) |
 |------------------|-------------------|------------------|
-| Day of Week      | **51.41**         | **51.28**        |
-| Time Window      | **57.69**         | **57.59**        |
-| Zone             | **55.03**         | **55.34**        |
+| Day of Week      | **53.20**         | **52.82**        |
+| Time Window      | **67.75**         | **65.80**        |
+| Zone             | **56.30**         | **56.38**        |
 
 These results suggest that prediction errors vary slightly across dimensions, with **time-windaw effects** being the hardest to capture on average.
 
