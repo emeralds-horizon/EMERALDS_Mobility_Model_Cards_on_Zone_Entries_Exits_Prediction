@@ -290,5 +290,5 @@ Performance may degrade due to data drift (e.g., seasonal changes, post-pandemic
 ### Related model cards
 
 Related spatiotemportal prediction models are:
--https://github.com/emeralds-horizon/analytics-and-learning/tree/main/uc1-crowd-model
--https://github.com/emeralds-horizon/analytics-and-learning/tree/main/uc1-parking-model
+https://github.com/emeralds-horizon/mlops-crowd-density/blob/main/README.md
+https://github.com/emeralds-horizon/mlops-parking-model/blob/main/README.md
